@@ -193,7 +193,10 @@ a:focus {
     padding: 24px 24px 0;
     display: flow-root;
 }
-
+/*creates background color*/
+.o-row—neutral-x-light{
+    background-color: #f7f7f7;
+}
 /* size modifiers */
 
 .o-row--lg {
