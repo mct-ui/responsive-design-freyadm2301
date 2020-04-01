@@ -681,16 +681,19 @@ a:focus {
 
 @media (min-width: 992px) {
     .c-footer {
-    }
-
-    .c-footer__logo {
         
     }
 
-    .c-footer__logo .c-logo {
+    .c-footer__logo {
+         
     }
 
-    .c-footer__nav {
+    .c-footer__logo .c-logo {
+        
+    }
+
+    .c-footer__nav: {
+        
     }
 }
 
