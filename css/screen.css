@@ -644,6 +644,56 @@ a:focus {
     background-color: #fff;
 }
 
+/*
+    Component: footer
+    ---
+    Main footer of the website
+*/
+
+.c-footer {
+    display: flex;
+}
+
+.c-footer__logo {
+    display: inline-flex;
+
+}
+
+.c-footer__nav {
+    display: inline-flex;
+    align-items: center;
+    
+}
+
+@media (min-width: 768px) {
+    .c-footer {
+        
+    }
+
+    .c-footer__logo {
+        justify-content: center;
+    }
+
+    .c-footer__nav {
+        justify-content: space-evenly;
+    }
+}
+
+@media (min-width: 992px) {
+    .c-footer {
+    }
+
+    .c-footer__logo {
+        
+    }
+
+    .c-footer__logo .c-logo {
+    }
+
+    .c-footer__nav {
+    }
+}
+
 /*------------------------------------*\
   #UTILITIES
 \*------------------------------------*/
