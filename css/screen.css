@@ -1,26 +1,28 @@
 /*------------------------------------*\
   #FONTS
 \*------------------------------------*/
+
 @font-face {
     font-family: "HK Grotesk Web";
     font-weight: 200;
-    src: url("../fonts/hkgrotesk-light-webfont.woff2") format("woff2");
-    src: url("../fonts/hkgrotesk-light-webfont.woff") format("woff");
+    src: url("../fonts/hkgrotesk-light-webfont.woff2") format("woff2"),
+         url("../fonts/hkgrotesk-light-webfont.woff") format("woff");
 }
 
 @font-face {
     font-family: "HK Grotesk Web";
     font-weight: 400;
-    src: url("../fonts/hkgrotesk-regular-webfont.woff2") format("woff2");
-    src: url("../fonts/hkgrotesk-regular-webfont.woff") format("woff");
+    src: url("../fonts/hkgrotesk-regular-webfont.woff2") format("woff2"),
+         url("../fonts/hkgrotesk-regular-webfont.woff") format("woff");
 }
 
 @font-face {
     font-family: "HK Grotesk Web";
     font-weight: 600;
-    src: url("../fonts/hkgrotesk-medium-webfont.woff2") format("woff2");
-    src: url("../fonts/hkgrotesk-medium-webfont.woff") format("woff");
+    src: url("../fonts/hkgrotesk-medium-webfont.woff2") format("woff2"),
+         url("../fonts/hkgrotesk-medium-webfont.woff") format("woff");
 }
+
 /*------------------------------------*\
   #GENERIC
 \*------------------------------------*/
@@ -39,6 +41,11 @@ html {
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+.has-mobile-nav {
+    overflow: hidden;
 }
 
 *,
@@ -60,6 +67,12 @@ html {
  *
  * Customize the background color to match your design.
  */
+
+::-moz-selection {
+    background: #5051DB;
+    color: white;
+    text-shadow: none;
+}
 
 ::selection {
     background: #5051DB;
@@ -169,7 +182,7 @@ hr {
 
 a {
     color: #5051DB;
-    transition: all .1s ease-in-out;
+    transition: all .1s ease;
 }
 
 a:visited,
@@ -197,13 +210,14 @@ a:focus {
     padding: 24px 24px 0;
     display: flow-root;
 }
+
 /* color modifiers */
 
-.o-row—-neutral-x-light{
-    background-color: #f7f7f7;
+.o-row--neutral-x-light {
+    background-color: #F7F7FA;
 }
 
-.o-row--gradient{
+.o-row--gradient-1 {
     background: linear-gradient(to top right, #5051DB, #3887F7);
     color: #fff;
 }
@@ -257,23 +271,24 @@ a:focus {
 */
 
 .o-section {
-    display: flow-root; /* New solution! Fixes margin collapsing */
+    display: flex;
+    flex-direction: column;
 }
 
 .o-section + .o-section {
-    padding-top: 24px;
+    margin-top: 24px;
 }
 
 @media (min-width: 768px) {
     .o-section--lg + .o-section--lg,
     .o-section--xl + .o-section--xl {
-        padding-top: 48px;
+        margin-top: 48px;
     }
 }
 
 @media (min-width: 1200px) {
     .o-section--xl + .o-section--xl {
-        padding-top: 72px;
+        margin-top: 72px;
     }
 }
 
@@ -286,8 +301,6 @@ a:focus {
 */
 
 .o-layout {
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
     flex-wrap: wrap;
 }
@@ -405,38 +418,10 @@ a:focus {
     padding: 0;
 }
 
-/*
-    Object: Button reset
-    ---
-    Small button reset object
-*/
-
-.o-button-reset {
-    border: none;
-    margin: 0;
-    padding: 0;
-    width: auto;
-    overflow: visible;
-    background: transparent;
-
-    /* inherit font & color from ancestor */
-    color: inherit;
-    font: inherit;
-
-    /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
-    line-height: normal;
-
-    /* Corrects font smoothing for webkit */
-    -webkit-font-smoothing: inherit;
-    -moz-osx-font-smoothing: inherit;
-
-    /* Corrects inability to style clickable `input` types in iOS */
-    -webkit-appearance: none;
-}
-
 /*------------------------------------*\
   #COMPONENTS
 \*------------------------------------*/
+
 /*
     Component: Logo
     ---
@@ -450,7 +435,7 @@ a:focus {
 }
 
 .c-logo__symbol {
-    height: 100%;
+    height: inherit;
 }
 
 @media (min-width: 768px) {
@@ -470,21 +455,26 @@ a:focus {
     justify-content: space-between;
     align-items: center;
 }
+
 .c-header__nav {
     display: none;
 }
 
 @media (min-width: 992px) {
+    .c-header__logo,
     .c-header__nav {
-        display: block;
+        flex-grow: 1;
+        flex-basis: 50%;
+    }
+
+    .c-header__nav {
+        display: flex;
+        justify-content: flex-end;
     }
 
     .c-header__nav--main {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        margin-top: 12px;
+        flex-grow: 2;
+        justify-content: center;
     }
 
     .c-header__mobile-nav-trigger {
@@ -505,7 +495,6 @@ a:focus {
 
 .c-footer__logo {
     width: 100%;
-
 }
 
 .c-footer__nav {
@@ -564,26 +553,11 @@ a:focus {
     } */
 }
 
-
 /*
     Component: Nav
     ---
     Main navigation of the site
 */
-
-.c-nav-trigger {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 24px;
-    width: 24px;
-    height: 24px;
-}
-
-.c-nav-trigger__svg {
-    fill: #202024;
-    height: 100%;
-}
 
 .c-nav {
     font-size: 18px;
@@ -619,7 +593,7 @@ a:focus {
     color: #5051db;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
     .c-nav__list {
         display: flex;
         margin-left: -16px;
@@ -754,6 +728,10 @@ a:focus {
     margin-right: 20px;
 }
 
+.c-title-icon__path {
+    fill: #202024;
+}
+
 @media (min-width: 768px) {
     .c-title-icon__icon {
         height: 84px;
@@ -780,7 +758,6 @@ a:focus {
     line-height: 24px;
     font-weight: 400;
     padding: 4px 0;
-    transition: color .175s ease-in;
 }
 
 .c-link-cta,
@@ -802,7 +779,7 @@ a:focus {
     transform-origin: left;
     transition-property: transform, background-color;
     transition-duration: .175s;
-    transition-timing-function: ease-in;
+    transition-timing-function: ease;
 }
 
 .c-link-cta:hover {
